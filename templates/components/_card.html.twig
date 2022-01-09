@@ -46,7 +46,20 @@
 							<path d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM78.83333,122.34217l-10.75,-10.75l25.59217,-25.59217l-25.59217,-25.59217l10.75,-10.75l36.34217,36.34217z"></path>
 						</g>
 					</g>
-				</svg> Acteur</li>
+				</svg>
+				Acteur</li>
+			{% for quote in client.quotes %}
+				<li class="list-group-item text-light fst-italic">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewbox="0 0 172 172" style=" fill:#000000;">
+						<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+							<path d="M0,172v-172h172v172z" fill="none"></path>
+							<g fill="#fffdf9">
+								<path d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM78.83333,122.34217l-10.75,-10.75l25.59217,-25.59217l-25.59217,-25.59217l10.75,-10.75l36.34217,36.34217z"></path>
+							</g>
+						</g>
+					</svg>
+					{{quote.quote}}</li>
+			{% endfor %}
 		</ul>
 		<div class="options align-self-center justify-content-between d-flex flew-row gap-2 p-3">
 			<div class="dropdown">
