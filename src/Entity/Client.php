@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,6 +59,16 @@ class Client
      * @ORM\JoinColumn(nullable=false)
      */
     private ?User $agent;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Quote::class, mappedBy="owner", orphanRemoval=true)
+     */
+    private $quotes;
+
+    public function __construct()
+    {
+        $this->quotes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -156,6 +168,36 @@ class Client
     public function setAgent(?User $agent): self
     {
         $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quote[]
+     */
+    public function getQuotes(): Collection
+    {
+        return $this->quotes;
+    }
+
+    public function addQuote(Quote $quote): self
+    {
+        if (!$this->quotes->contains($quote)) {
+            $this->quotes[] = $quote;
+            $quote->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuote(Quote $quote): self
+    {
+        if ($this->quotes->removeElement($quote)) {
+            // set the owning side to null (unless already changed)
+            if ($quote->getOwner() === $this) {
+                $quote->setOwner(null);
+            }
+        }
 
         return $this;
     }
