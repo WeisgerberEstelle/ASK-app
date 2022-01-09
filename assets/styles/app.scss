@@ -1,5 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
+@import "variables.scss";
 
 body {
-background-color:darkcyan;
+background:url("../images/wallpaper-forest.jpg") no-repeat;
+background-size:cover;
+}
+
+.navigation {
+    background: linear-gradient(to right, rgba(255,253,249,1), rgba(255,253,249,0));
+    box-shadow: $shadow;
 }

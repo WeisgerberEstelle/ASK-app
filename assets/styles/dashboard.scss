@@ -1,7 +1,44 @@
-@import "~bootstrap/scss/bootstrap";
 @import "variables.scss";
 @import "app.scss";
 
 h1 {
     color: $primary;
+}
+
+.client-card {
+    width           : 350px;
+    height          : auto;
+    box-shadow      : $shadow;
+    background-color: #ffffff00;
+}
+
+.name {
+    font-family: $title-family;
+}
+
+.card-content {
+    background-color: $light-opacity;
+    width: 100%;
+}
+
+.options {
+    width: 100%;
+}
+
+.sidebar {
+    width           : 50px;
+    float           : left;
+    height          : auto;
+    writing-mode    : sideways-rl;
+    background-color: $dark;
+    color           : $light;
+}
+
+.informations {
+    width      : 100%;
+    line-height: 40px;
+}
+
+.informations li {
+    background-color: $dark-light-opacity;
 }
