@@ -10,7 +10,6 @@ use Doctrine\Persistence\ObjectManager;
 
 class ClientFixtures extends Fixture implements DependentFixtureInterface
 {
-
     public const CLIENTS = 10;
     public function load(ObjectManager $manager): void
     {
@@ -32,7 +31,6 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     }
 
     public function getDependencies()
-
     {
 
         return [
