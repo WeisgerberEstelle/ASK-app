@@ -12,5 +12,3 @@ import './styles/app.scss';
 import './bootstrap';
 
 require('bootstrap');
-
-console.log('Hello Webpack Encore !');
