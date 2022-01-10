@@ -2,24 +2,33 @@
 
 {% block title %}Connection
 {% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('dashboard') }}
+{% endblock %}
 
 {% block body %}
 	{% if error %}
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
+	<div class="container mt-2 pt-5 ">
+		<div class="row">
+			<div class="card login-card col-md-6 offset-md-3 p-3 rounded-3">
+				<h1 class="m-5 text-center text-secondary">Mon espace personnel</h1>
+				<form action="{{ path('login') }}" method="post" class="d-flex flex-column align-items-center gap-3">
+					<label for="username">Email :</label>
+					<input type="text" id="username" name="_username" value="{{ last_username }}"/>
 
-	<form action="{{ path('login') }}" method="post">
-		<label for="username">Email:</label>
-		<input type="text" id="username" name="_username" value="{{ last_username }}"/>
+					<label for="password">Mot de passe :</label>
+					<input type="password" id="password" name="_password"/>
 
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="_password"/>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<input type="hidden" name="_target_path" value="/dashboard"/>
 
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-		<input type="hidden" name="_target_path" value="/dashboard"/>
-
-		<button type="submit">login</button>
-	</form>
+					<button class="btn btn-secondary p-2 my-2 text-light" type="submit">Se connecter</button>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
 {% endblock %}

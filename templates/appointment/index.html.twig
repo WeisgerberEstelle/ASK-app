@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Rendez-vous
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('dashboard') }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+		<h1 class="text-center mt-5 text-light">
+			Ajouter un rendez-vous</h1>
+		<div class="row mt-3g-5">
+			<div class="card appointment col-md-6 offset-md-3 fs-4 my-5 p-4 rounded-3">
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button class="btn btn-secondary fw-bold text-light align-self-center m-4">Valider</button>
+				<a class="btn btn-outline-dark align-self-center m4-4" href=" {{ path('dashboard')}}">Retour</a>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

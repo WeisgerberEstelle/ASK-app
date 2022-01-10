@@ -10,3 +10,8 @@ background-size:cover;
     background: linear-gradient(to right, rgba(255,253,249,1), rgba(255,253,249,0));
     box-shadow: $shadow;
 }
+
+.login-card, .appointment {
+    background-color: $light-opacity;
+    box-shadow: $shadow;
+}
