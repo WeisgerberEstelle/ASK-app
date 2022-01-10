@@ -3,11 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Appointment;
-use Doctrine\DBAL\Types\DateTimeType;
-use Doctrine\DBAL\Types\TextType;
+use App\Entity\Client;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType as TypeDateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 ;
@@ -18,18 +18,16 @@ class AppointmentType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,['label' => 'Titre du rendez-vous'])
-            ->add('date', DateTimeType::class, ['label' => 'Date'])
+            ->add('date', TypeDateTimeType::class, ['label' => 'Date'])
             ->add('client', EntityType::class, [
 
-                'class' => client::class,
+                'class' => Client::class,
             
-                'choice_label' => 'Nom',
+                'choice_label' => 'lastname',
             
                 'multiple' => false,
             
                 'expanded' => false,
-
-                'by_reference' => false,
             ])
         ;
     }

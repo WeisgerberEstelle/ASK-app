@@ -63,7 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $clients;
 
     /**
-     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="organiser", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="organiser", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $appointments;
 
