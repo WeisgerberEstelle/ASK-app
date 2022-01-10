@@ -1,17 +1,17 @@
 <nav class="navbar navigation">
   <div class="container-fluid p-3 justify-content-start gap-4">
-    <a class="btn btn-primary " href="/"> ASK      
+    <a class="btn btn-secondary text-light " href="/"> ASK      
     </a>
     {% if app.user %}
 
 				Bienvenue {{ app.user.firstname}} sur le dashboard de ASK!
 
-				<a href="{{ path('app_logout') }}">
+				<a href="{{ path('app_logout') }}" class="link-secondary">
 					Déconnection</a>
 
 			{% else %}
 
-				<a href="{{ path('login') }}">
+				<a href="{{ path('login') }}" class="link-secondary">
 					Connection</a>
 				
 			{% endif %}
