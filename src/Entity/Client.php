@@ -65,9 +65,15 @@ class Client
      */
     private $quotes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="client", orphanRemoval=true)
+     */
+    private $appointments;
+
     public function __construct()
     {
         $this->quotes = new ArrayCollection();
+        $this->appointments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,6 +202,36 @@ class Client
             // set the owning side to null (unless already changed)
             if ($quote->getOwner() === $this) {
                 $quote->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Appointment[]
+     */
+    public function getAppointments(): Collection
+    {
+        return $this->appointments;
+    }
+
+    public function addAppointment(Appointment $appointment): self
+    {
+        if (!$this->appointments->contains($appointment)) {
+            $this->appointments[] = $appointment;
+            $appointment->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointment(Appointment $appointment): self
+    {
+        if ($this->appointments->removeElement($appointment)) {
+            // set the owning side to null (unless already changed)
+            if ($appointment->getClient() === $this) {
+                $appointment->setClient(null);
             }
         }
 
